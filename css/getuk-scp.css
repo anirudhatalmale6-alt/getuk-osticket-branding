@@ -1,0 +1,176 @@
+/* ------------------------------------------------------------------
+   GetUK Support - staff control panel branding
+   Deliberately a light touch. The agent panel is a dense working tool,
+   so this only re-colours chrome (header, active tab, links, buttons)
+   and leaves every table, form and dialog layout exactly as osTicket
+   ships it. Nothing here changes behaviour.
+   ------------------------------------------------------------------ */
+
+:root {
+    --guk-red:      #e31837;
+    --guk-red-dark: #b91329;
+    --guk-navy:     #07072f;
+    --guk-cream:    #f4f1eb;
+    --guk-line:     #e4e1da;
+    --guk-ink:      #111111;
+    --guk-muted:    #5b5b66;
+}
+
+body {
+    background: var(--guk-cream);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+    color: var(--guk-ink);
+}
+
+#container {
+    background: #ffffff;
+    border: 1px solid var(--guk-line);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(7,7,47,.04), 0 10px 28px rgba(7,7,47,.05);
+    overflow: hidden;
+}
+
+/* ---------- header ---------- */
+
+#header {
+    background: #ffffff;
+    border-bottom: 3px solid var(--guk-red);
+    padding: 16px 22px 14px !important;
+}
+
+#header #logo img, #header img#logo { max-height: 42px; width: auto; }
+
+/* the "Welcome, x | Admin Panel | Profile | Log Out" block */
+#header .pull-right,
+#header #info {
+    background: var(--guk-cream) !important;
+    border: 1px solid var(--guk-line) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: var(--guk-muted);
+    font-size: 13px;
+    padding: 8px 14px !important;
+}
+
+#header a { color: var(--guk-red); }
+#header a:hover { color: var(--guk-red-dark); }
+
+/* ---------- primary tabs ---------- */
+
+ul#nav {
+    background: var(--guk-navy) !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 12px !important;
+}
+
+ul#nav li a {
+    background: none !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: rgba(255,255,255,.75) !important;
+    font-weight: 600;
+    text-shadow: none !important;
+    border-bottom: 3px solid transparent !important;
+}
+
+ul#nav li a:hover { color: #ffffff !important; }
+
+/* the active tab keeps osTicket's white "lifted tab" look - it must not
+   inherit the white text used for the inactive tabs on the navy bar, or it
+   becomes white-on-white and unreadable */
+ul#nav li.active a,
+ul#nav li a.active {
+    background: #ffffff !important;
+    color: var(--guk-navy) !important;
+    border-bottom-color: #ffffff !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+/* ---------- secondary nav ---------- */
+
+ul#sub_nav {
+    background: #ffffff !important;
+    background-image: none !important;
+    border-bottom: 1px solid var(--guk-line) !important;
+    box-shadow: none !important;
+}
+
+ul#sub_nav li a { color: var(--guk-muted) !important; font-weight: 600; }
+ul#sub_nav li a:hover,
+ul#sub_nav li.active a { color: var(--guk-navy) !important; }
+
+/* ---------- links and buttons ---------- */
+
+/* Only body copy links get the brand red. Sortable column headers and the
+   ticket toolbar are chrome, not links the eye should be drawn to - leaving
+   them red turned the whole queue into a wall of red text. */
+#content a { color: var(--guk-red); }
+#content a:hover { color: var(--guk-red-dark); }
+
+#content th a,
+#content thead a,
+#content .action-button,
+#content .action-button a,
+#content a.action-button {
+    color: var(--guk-navy) !important;
+}
+
+/* toolbar icon buttons stay neutral; osTicket's own .red class (delete)
+   keeps its warning colour */
+#content a.button.action-button:not(.red),
+#content a.action-button:not(.red),
+#content span.action-button:not(.red) {
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid var(--guk-line) !important;
+    color: var(--guk-navy) !important;
+}
+
+#content a.button.action-button:not(.red):hover,
+#content a.action-button:not(.red):hover {
+    background: var(--guk-cream) !important;
+    border-color: var(--guk-navy) !important;
+}
+
+.button:not(.action-button), a.button:not(.action-button),
+input[type=submit], button.green, .greenbutton {
+    background: var(--guk-red) !important;
+    background-image: none !important;
+    border: 1px solid var(--guk-red) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+}
+
+.button:hover, a.button:hover, input[type=submit]:hover {
+    background: var(--guk-red-dark) !important;
+    border-color: var(--guk-red-dark) !important;
+}
+
+input[type=reset], input[value="Cancel"] {
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid var(--guk-line) !important;
+    border-radius: 8px !important;
+    color: var(--guk-muted) !important;
+    text-shadow: none !important;
+}
+
+/* ---------- headings and tables ---------- */
+
+#content h2, .pull-left h2 { color: var(--guk-navy); }
+
+table.list th, table.dtable th {
+    background: var(--guk-cream) !important;
+    background-image: none !important;
+    color: var(--guk-navy) !important;
+    text-shadow: none !important;
+}
+
+#footer { color: var(--guk-muted); font-size: 13px; }

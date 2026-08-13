@@ -1,0 +1,368 @@
+/* ------------------------------------------------------------------
+   GetUK Support - client portal branding
+   Palette taken from getuk.support:
+     red    #e31837   navy #07072f   cream #f4f1eb
+     line   #e4e1da   ink  #111111
+   This file is additive - it only overrides, nothing is deleted from
+   osTicket's own stylesheets. Safe to remove to revert to stock.
+   ------------------------------------------------------------------ */
+
+:root {
+    --guk-red:      #e31837;
+    --guk-red-dark: #b91329;
+    --guk-navy:     #07072f;
+    --guk-cream:    #f4f1eb;
+    --guk-line:     #e4e1da;
+    --guk-ink:      #111111;
+    --guk-muted:    #5b5b66;
+}
+
+/* ---------- page shell ---------- */
+
+body {
+    background: var(--guk-cream) !important;
+    color: var(--guk-ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+#container {
+    width: auto !important;
+    max-width: 1080px;
+    margin: 32px auto 48px !important;
+    background: #ffffff;
+    border: 1px solid var(--guk-line);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(7,7,47,.04), 0 12px 32px rgba(7,7,47,.06);
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+/* ---------- header / logo ---------- */
+
+#header {
+    background: var(--guk-navy);
+    padding: 22px 34px 20px !important;
+    margin: 0 !important;
+    border-bottom: 3px solid var(--guk-red);
+    height: auto !important;
+    overflow: hidden;
+}
+
+#header #logo img,
+a#logo img {
+    max-height: 46px;
+    width: auto;
+}
+
+#header .pull-right,
+#header .flush-right {
+    color: rgba(255,255,255,.72);
+    font-size: 13px;
+    padding-top: 12px;
+}
+
+#header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#header a:hover { color: var(--guk-red); }
+
+/* ---------- navigation ---------- */
+
+ul#nav {
+    background: #ffffff !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--guk-line) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 22px !important;
+    height: auto !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: stretch;
+    list-style: none;
+}
+
+ul#nav li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: block !important;
+    list-style: none;
+}
+
+ul#nav li a {
+    display: block;
+    background: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: var(--guk-muted) !important;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    padding: 16px 14px 13px !important;
+    border-bottom: 3px solid transparent !important;
+    text-shadow: none !important;
+}
+
+ul#nav li a:hover {
+    color: var(--guk-navy) !important;
+    border-bottom-color: var(--guk-line) !important;
+}
+
+ul#nav li a.active {
+    color: var(--guk-navy) !important;
+    border-bottom-color: var(--guk-red) !important;
+    background: none !important;
+}
+
+/* osTicket puts little sprite icons on the nav - they clash with a flat
+   nav bar, so drop them rather than fight the sprite sheet */
+ul#nav li a.home,
+ul#nav li a.new,
+ul#nav li a.status,
+ul#nav li a.kb,
+ul#nav li a.tickets { background-image: none !important; padding-left: 14px !important; }
+
+/* ---------- content ---------- */
+
+#content {
+    padding: 34px 34px 40px !important;
+    margin: 0 !important;
+    border: 0 !important;
+}
+
+h1, h2, h3 { color: var(--guk-navy); font-weight: 700; letter-spacing: -.01em; }
+
+#content h1 { font-size: 30px; margin: 0 0 14px; }
+
+#landing_page p, #content p { color: var(--guk-muted); max-width: 62ch; }
+
+a { color: var(--guk-red); }
+a:hover { color: var(--guk-red-dark); }
+
+/* ---------- buttons ---------- */
+
+.button,
+a.button,
+input[type=submit],
+input[type=button],
+button.button {
+    display: inline-block;
+    background: var(--guk-red) !important;
+    background-image: none !important;
+    border: 1px solid var(--guk-red) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: .01em;
+    padding: 11px 20px !important;
+    text-align: center;
+    text-shadow: none !important;
+    text-decoration: none !important;
+    transition: background .15s ease, border-color .15s ease;
+    height: auto !important;
+    line-height: 1.3 !important;
+}
+
+.button:hover,
+a.button:hover,
+input[type=submit]:hover,
+button.button:hover {
+    background: var(--guk-red-dark) !important;
+    border-color: var(--guk-red-dark) !important;
+}
+
+/* secondary / destructive-free actions: Reset and Cancel should not compete
+   with the primary action, so give them a quiet outline instead of red */
+input[type=reset],
+input[value="Cancel"],
+input[value="Reset"],
+a.cancel {
+    background: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid var(--guk-line) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    color: var(--guk-muted) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    padding: 11px 20px !important;
+    text-shadow: none !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+}
+
+input[type=reset]:hover,
+input[value="Cancel"]:hover,
+input[value="Reset"]:hover,
+a.cancel:hover {
+    background: var(--guk-cream) !important;
+    border-color: var(--guk-navy) !important;
+    color: var(--guk-navy) !important;
+}
+
+/* breathing room between stacked form actions */
+input[type=submit], input[type=reset], input[type=button] { margin-right: 8px; }
+
+/* the stock portal ships one blue and one green CTA - make the primary
+   action red and the secondary a quiet outline so there is one clear
+   next step rather than two competing ones */
+a.blue.button { background: var(--guk-red) !important; border-color: var(--guk-red) !important; }
+
+a.green.button {
+    background: #ffffff !important;
+    border: 1px solid var(--guk-line) !important;
+    color: var(--guk-navy) !important;
+}
+a.green.button:hover {
+    background: var(--guk-cream) !important;
+    border-color: var(--guk-navy) !important;
+    color: var(--guk-navy) !important;
+}
+
+/* the landing page puts the two CTAs in a floated sidebar - constrain it so
+   the buttons cannot run off the right edge of the card */
+#landing_page { overflow: hidden; }
+
+#landing_page .sidebar.pull-right {
+    float: right;
+    width: 260px;
+    max-width: 40%;
+    margin-left: 28px;
+    padding: 0 !important;
+}
+
+.front-page-button,
+.front-page-button.flush-right {
+    width: 100% !important;
+    float: none !important;
+    margin: 0 !important;
+}
+
+.front-page-button a.button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 12px 0;
+    padding: 14px 18px !important;
+}
+
+@media (max-width: 760px) {
+    #landing_page .sidebar.pull-right {
+        float: none; width: 100%; max-width: 100%; margin: 0 0 24px 0;
+    }
+}
+
+/* ---------- forms ---------- */
+
+input[type=text], input[type=email], input[type=password],
+input[type=tel], input[type=number], textarea, select {
+    border: 1px solid var(--guk-line) !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    font-size: 14px;
+    color: var(--guk-ink);
+    background: #ffffff;
+    box-shadow: none !important;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus,
+textarea:focus, select:focus {
+    border-color: var(--guk-navy) !important;
+    outline: 3px solid rgba(227,24,55,.12);
+    outline-offset: 0;
+}
+
+table.form_table td, table.form_table th { border-color: var(--guk-line) !important; }
+
+/* ---------- tables ---------- */
+
+table.list, table.list th, table.list td { border-color: var(--guk-line) !important; }
+
+table.list th {
+    background: var(--guk-cream) !important;
+    background-image: none !important;
+    color: var(--guk-navy) !important;
+    font-weight: 700;
+    text-shadow: none !important;
+}
+
+table.list tbody tr:hover td { background: #fbfaf8 !important; }
+
+/* ---------- footer ---------- */
+
+#footer {
+    background: transparent;
+    border-top: 1px solid var(--guk-line);
+    color: var(--guk-muted);
+    font-size: 13px;
+    margin: 0 !important;
+    padding: 20px 34px !important;
+    text-align: center;
+}
+
+#footer a { color: var(--guk-muted); }
+#footer a:hover { color: var(--guk-red); }
+
+/* keep the osTicket credit - it is GPL software and the attribution is
+   part of the licence - just make it sit quietly */
+#poweredBy { opacity: .45; }
+#poweredBy:hover { opacity: .9; }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 760px) {
+    #container { margin: 0 !important; border-radius: 0; border-left: 0; border-right: 0; }
+    #content { padding: 24px 20px 32px !important; }
+    ul#nav { padding: 0 8px !important; }
+    ul#nav li a { padding: 14px 10px 11px !important; font-size: 13px; }
+    .front-page-button a.button { width: 100%; }
+    #content h1 { font-size: 24px; }
+
+    /* logo above the sign-in line rather than under it - the sign-in block
+       comes first in osTicket's markup, so reorder rather than re-template */
+    #header {
+        padding: 18px 20px !important;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    #header .pull-right, #header .flush-right {
+        float: none !important;
+        padding-top: 0;
+        text-align: left !important;
+        align-self: flex-start;
+        width: auto !important;
+        margin: 0 !important;
+    }
+    #header .pull-right p { margin: 0 !important; }
+    #header #logo, #header a#logo { float: none !important; }
+
+    /* osTicket's client CSS gives the landing column a fixed pixel width,
+       which pushes the copy off-screen on a phone. Make it fluid. */
+    #landing_page,
+    #landing_page .content,
+    #landing_page .main-content,
+    #content .thread-body,
+    #content .main-content {
+        width: auto !important;
+        max-width: 100% !important;
+        float: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    #content p, #landing_page p { max-width: 100% !important; }
+    #content, #container { overflow-x: hidden; }
+    table.list { width: 100% !important; }
+}
