@@ -43,6 +43,48 @@ because doing them there means they survive upgrades:
 2. **Landing page** — Admin Panel → Manage → Pages → Landing, paste
    `content/landing-page.html` via the editor's source view.
 
+## Automated emails
+
+`emails/` rewrites every customer-facing notification in GetUK's voice, inside a
+branded HTML shell (navy header, red rule, Get Group Ltd footer with the phone
+number). Seven emails and seven portal pages:
+
+| | |
+|---|---|
+| `ticket.autoresp` | we've received your request |
+| `ticket.autoreply` | auto-answer from the help topic |
+| `message.autoresp` | your reply was received |
+| `ticket.notice` | we opened a ticket for you |
+| `ticket.reply` | an agent has responded |
+| `ticket.activity.notice` | update on your ticket |
+| `ticket.overlimit` | open-ticket limit reached |
+| `page.*` | thank-you, sign-in banner, password reset, access link, registration |
+
+Apply with:
+
+```bash
+mysql -u<user> -p <osticket_db> < emails/apply-templates.sql
+```
+
+Then set Admin Panel → Settings → Company → Company Name to `Get Group Ltd`
+(that's what `%{company.name}` resolves to elsewhere in osTicket).
+
+**These were verified by actually sending them.** A test ticket was raised
+through the portal with a fake `sendmail_path` capturing the output, and the
+resulting `.eml` was parsed to confirm no unresolved `%{variables}` and a
+working signed ticket link — not just eyeballed in the editor.
+
+⚠️ **osTicket ships with the customer auto-response switched OFF**
+(`ticket_autoresponder` is empty on a fresh install), so nobody gets a
+"we've got it" email at all. Branding emails that never send is pointless, so
+`apply-templates.sql` turns it on. Remove those two lines from the SQL if that
+isn't wanted.
+
+Email layout is table-based with inline styles only, and no remote images —
+Gmail and Outlook strip `<style>` blocks, and most clients block images by
+default, so a logo image would read as a broken box. The header is live text
+styled in the brand colours instead.
+
 ## Design notes
 
 Both stylesheets are **additive**. They only override; nothing is deleted from
